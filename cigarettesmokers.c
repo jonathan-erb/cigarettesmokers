@@ -19,7 +19,6 @@ int isPaper = 0;
 int isMatch = 0;
 
 /// smoker semaphores
-sem_t mutex;
 sem_t tabaccoSem;
 sem_t paperSem;
 sem_t matchSem;
@@ -184,15 +183,16 @@ int main() {
     pthread_create(&pusher_threads[1], NULL, paper_pusher, NULL);
     pthread_create(&pusher_threads[2], NULL, match_pusher, NULL);
     
-    // join agent
+    // join agent threads
     for(int i = 0; i < 3; i++) {
         pthread_join(agent_threads[i], NULL);
     }
-    //join threads
+    //join smoker threads
     for(int i = 0; i < 6; i++) {
         pthread_join(smoker_threads[i], NULL);
     }
     
+    //join pusher threads
     for(int i = 0; i < 3; i++) {
         pthread_join(pusher_threads[i], NULL);
     }
