@@ -75,8 +75,8 @@ void* tabacco_pusher(void* arg) {
             sem_post(&paperSem);
         } else {
             isTabacco = 1;
-            sem_post(&mutex);
         }
+        sem_post(&mutex);
     }
     pthread_exit(NULL);
 }
@@ -93,8 +93,8 @@ void* paper_pusher(void* arg) {
             sem_post(&tabaccoSem);
         } else {
             isPaper = 1;
-            sem_post(&mutex);
         }
+        sem_post(&mutex);
     }
     pthread_exit(NULL);
 }
@@ -111,8 +111,8 @@ void* match_pusher(void* arg) {
             sem_post(&tabaccoSem);
         } else {
             isMatch = 1;
-            sem_post(&mutex);
         }
+        sem_post(&mutex);
     }
     pthread_exit(NULL);
 }
