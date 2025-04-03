@@ -189,9 +189,10 @@ int main() {
         pthread_join(agent_threads[i], NULL);
     }
     //join threads
-    for(int i = 0; i < 3; i++) {
+    for(int i = 0; i < 6; i++) {
         pthread_join(smoker_threads[i], NULL);
     }
+    
     for(int i = 0; i < 3; i++) {
         pthread_join(pusher_threads[i], NULL);
     }
